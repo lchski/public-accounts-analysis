@@ -49,6 +49,7 @@ Department of Employment and Social,GC-ESDC
 Royal Canadian Mounted Police,GC-RCMP
 Transport Canada,GC-TC
 Department of Transport,GC-TC
+Public Health Agency of Canada,GC-PHAC
 Coradix Technology Consulting,Coradix Technology Consulting
 Coradix Technology,Coradix Technology Consulting
 Systemscope,Systemscope
@@ -125,7 +126,8 @@ Taligent Consulting,Taligent Consulting
 TES Contract Services,TES Contract Services
 The Halifax Computer Consulting Group,Halifax Computer Consulting Group
 PrecisionERP,PrecisionERP
-Cache Consulting,Cache Consulting
+Cache Consulting,Cache Computer Consulting
+Cache Computer,Cache Computer Consulting
 IPSS Inc,IPSS
 Michael Wager Consulting,Michael Wager Consulting
 Accenture,Accenture
@@ -142,6 +144,7 @@ Express Scripts,Express Scripts
 Babcock Canada,Babcock Canada
 Revenu Québec,GPQC: Revenu Québec
 Revenue Quebéc,GPQC: Revenu Québec
+Revenue Quebec,GPQC: Revenu Québec
 Vancouver Shipyards,Vancouver Shipyards
 Canadian Forces Morale and Welfare Services,GC-Canadian Forces Morale and Welfare Services
 Medavie Blue Cross,Medavie Blue Cross
@@ -180,3 +183,33 @@ Quantum Management Services,Quantum Management Services
 Parkwood Hospital,Parkwood Hospital
 Stantec,Stantec
 ADC-Stantec,Stantec
+Zylog System,Zylog Systems
+Infosys Public Services,Infosys
+Interis Consulting,Interis Consulting
+Government of Yukon,GPYK
+Government of the Yukon,GPYK
+Promaxis System,Promaxis Systems
+Aerotek ULC,Aerotek ULC
+Nisha Technologies,Nisha Technologies
+iFathom Corp,iFathom Corp
+Turtle Tech,Turtle Technologies
+Turtles Tech,Turtle Technologies
+ESI Canada,ESI Canada
+ESI Information Technologies,ESI Information Technologies
+ESI International,ESI International
+ESI Integrity,ESI Integrity
+Halifax Shipyards,Halifax Shipyards
+Province of Nova Scotia,GPNS
+Fleetway Inc,Fleetway Inc
+Capital District Health Authority,GPNS: Capital District Health Authority
+MDA System,MDA Systems
+MDA Information System,MDA Systems
+MDA Geospatial,MDA Systems
+City of Vancouver,GPBC: City of Vancouver
+WCG International Consultants,WCG International Consultants
+Bell Helicopter Textron,Bell Helicopter Textron
+Valcom,Valcom Consulting
+Canadian Base Operators,Canadian Base Operators
+Textron Systems,Textron Systems
+Centre intégré universitaire de santé et de services sociaux de l'Ouest-de-l'Île-de-Montréal,GPQC: Centre intégré universitaire de santé et de services sociaux de l'Ouest-de-l'Île-de-Montréal
+Canadian Forces Personnel Support Agency,GC-Canadian Forces Personnel Support Agency
