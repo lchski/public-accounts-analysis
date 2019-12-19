@@ -11,5 +11,17 @@ In some cases, we get multiple results. e.g. "Columbia" can also mean...
     District of Columbia
 ... we need then a second filtering step:
     filter(lword == "Columbia") %>%
-    filter(! str_detect(PRJCT_EN_DESC, "British")) %>%
+    filter(str_detect(PRJCT_EN_DESC, "British|Brtish")) %>%
     filter(! str_detect(PRJCT_EN_DESC, "District of|Bogota"))
+
+Same with Colombia:
+    filter(lword == "Colombia") %>%
+    filter(str_detect(PRJCT_EN_DESC, "British|Brtish|Bristish")) %>%
+    filter(! str_detect(PRJCT_EN_DESC, "District of|Bogota"))
+
+Use this to clean up once you think you're done:
+    lword %>%
+        select(lword) %>%
+        anti_join(canadian_regions_index, by = c("lword" = "region_lword")) %>%
+        count_group(lword) %>%
+        View()

@@ -1,4 +1,4 @@
-region,region_normalized,comment
+region_lword,region_normalized,comment
 Ontario,ON,
 Quebec,QC,
 Columbia,BC,"Needs further filtering. See notes."
@@ -50,9 +50,12 @@ Nova-Scotia,NS,
 On,ON,
 Onatrio,ON,
 Onatriio,ON,
+Ontariio,ON,
 ontario,ON,
 Ontaro,ON,
 Ontraio,ON,
 Quenec,QC,
 Secretariat,ON,
 Yellowknife,NT,
+Québec,QC,
+Colombia,BC,"Needs further filtering. See notes."
