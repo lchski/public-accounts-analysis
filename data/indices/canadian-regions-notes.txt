@@ -1,0 +1,15 @@
+Want to verify that lword reliably indicates the province in question.
+e.g. with "Territories", which we think means NWT...
+    lword %>%
+        filter(lword == "Territories") %>%
+        select(PRJCT_EN_DESC) %>%
+        filter(! str_detect(PRJCT_EN_DESC, "Northwest"))
+... should return 0.
+
+In some cases, we get multiple results. e.g. "Columbia" can also mean...
+    the country
+    District of Columbia
+... we need then a second filtering step:
+    filter(lword == "Columbia") %>%
+    filter(! str_detect(PRJCT_EN_DESC, "British")) %>%
+    filter(! str_detect(PRJCT_EN_DESC, "District of|Bogota"))
