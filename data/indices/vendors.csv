@@ -6,6 +6,7 @@ Public Works and Governement Services,GC-PSPC
 Public Works an Government Services,GC-PSPC
 Public Works and Government Service,GC-PSPC
 Public Works Government Services,GC-PSPC
+Public Services and Procurement,GC-PSPC
 Statistics Canada,GC-StatsCan
 "Statistics, Ottawa, Ontario",GC-StatsCan
 Shared Services Canada,GC-SSC
@@ -41,6 +42,13 @@ House of Commons,GC-HOC
 Canada Border Services Agency,GC-CBSA
 Veterans Affairs,GC-VAC
 Department of Veterans Affairs,GC-VAC
+Atomic Energy of Canada,GC-Atomic Energy of Canada
+AECL Atomic Energy of Canada,GC-Atomic Energy of Canada
+Employment and Social Development,GC-ESDC
+Department of Employment and Social,GC-ESDC
+Royal Canadian Mounted Police,GC-RCMP
+Transport Canada,GC-TC
+Department of Transport,GC-TC
 Coradix Technology Consulting,Coradix Technology Consulting
 Coradix Technology,Coradix Technology Consulting
 Systemscope,Systemscope
@@ -80,7 +88,8 @@ KPMG,KPMG
 Veritaaq Technology Hous,Veritaaq Technology House
 "Veritaaq, Ottawa",Veritaaq Technology House
 CGI,CGI
-Commissionaires,Commissionaires
+Commissionaires,Canadian Corps of Commissionaires
+Canadian Corps of Commissionaires,Canadian Corps of Commissionaires
 Fujitsu Consulting,Fujitsu
 IT/Net,IT/Net
 QMR Staffing,QMR Staffing
@@ -131,3 +140,43 @@ Irving Shipbuilding,Irving Shipbuilding
 PCL Constructors,PCL Constructors
 Express Scripts,Express Scripts
 Babcock Canada,Babcock Canada
+Revenu Québec,GPQC: Revenu Québec
+Revenue Quebéc,GPQC: Revenu Québec
+Vancouver Shipyards,Vancouver Shipyards
+Canadian Forces Morale and Welfare Services,GC-Canadian Forces Morale and Welfare Services
+Medavie Blue Cross,Medavie Blue Cross
+Seaspan Marine,Seaspan Marine
+Defence Construction Canada,GC—Defence Construction Canada
+"Defence Construction,",GC-Defence Construction Canada
+Computershare Trust,Computershare Trust Company
+Government of Ontario,GPON
+EllisDon,EllisDon
+Allied Wings,Allied Wings
+MacDonald Dettwiler and Associates,MacDonald Dettwiler and Associates
+D+H Limited Partnership,D+H Limited Partnership
+D\+H Limited Partnership,D+H Limited Partnership
+Sun Life,Sun Life Assurance
+NATO Seasparrow,NATO Seasparrow
+Government of Quebec,GPQC
+Serco Facilities,Serco Facilities Management
+Joint Strike Fighter Program,Joint Strike Fighter Program
+Weir Canada,Weir Canada
+Brookfield Global Integrated,Brookfield Global Integrated Solutions
+Brookfield Office Properties Management,Brookfield Office Properties Management
+Brookfield Properties Management,Brookfield Office Properties Management
+Brookfield Johnson Controls,Brookfield Johnson Controls
+Johnson Controls,Brookfield Johnson Controls
+Brookfield Global Relocation,Brookfield Global Relocation Services
+Sunnybrook & Women's College,Sunnybrook & Women's College
+Government of British Columbia,GPBC
+SNC-Lavalin,SNC-Lavalin
+Thales Canada,Thales Canada
+WSP Canada,WSP
+WSP Global,WSP
+"WSP,",WSP
+Government of Alberta,GPAB
+Pomerleau,Pomerleau
+Quantum Management Services,Quantum Management Services
+Parkwood Hospital,Parkwood Hospital
+Stantec,Stantec
+ADC-Stantec,Stantec

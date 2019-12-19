@@ -17,3 +17,24 @@ lword %>%
   select(PRJCT_EN_DESC) %>%
   filter(! str_detect(PRJCT_EN_DESC, "Northwest"))
 # ... should return 0. [TODO: Use assert or some such. Y'know.]
+
+
+## vendor normalizing...
+pservices_named_vendors %>%
+  select(vendor_normalized, PRJCT_EN_DESC, AGRG_PYMT_AMT) %>%
+  group_by(vendor_normalized, PRJCT_EN_DESC) %>%
+  summarize(
+    count = n(),
+    min = min(AGRG_PYMT_AMT),
+    max = max(AGRG_PYMT_AMT),
+    total = sum(AGRG_PYMT_AMT)
+  ) %>%
+  ungroup() %>%
+  mutate(
+    total_prop = total / sum(total),
+    count_prop = count / sum(count)
+  ) %>%
+  select(vendor_normalized, PRJCT_EN_DESC, count, count_prop, min:total_prop) %>%
+  arrange(-total_prop) %>%
+  filter(is.na(vendor_normalized)) %>%
+  filter(total_prop > 0.001)
