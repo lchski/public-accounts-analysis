@@ -11,11 +11,13 @@ professional_services <- tibble(path = fs::dir_ls("data/source/", regexp = "\\.c
   pull(path) %>%
   map_dfr(
     read_csv,
-    col_types = cols("MINC" = col_double(), "ROBJ_CD" = col_double())
+    col_types = cols("MINC" = col_double(), "ROBJ_CD" = col_double(), `DepartmentNumber-Numéro-de-Ministère` = col_character())
   ) %>%
   filter(! is.na(PRJCT_EN_DESC)) %>% ## remove rows that just total categories, we can do that ourselves
   remove_extra_columns() %>%
-  mutate(PRJCT_EN_DESC = trimws(PRJCT_EN_DESC, whitespace = "[\\h\\v]"))
+  mutate(PRJCT_EN_DESC = trimws(PRJCT_EN_DESC, whitespace = "[\\h\\v]")) %>%
+  mutate(fyear = str_trunc(FSCL_YR, 4, ellipsis = "")) %>%
+  mutate(fyear = parse_date(paste0(fyear, "-04-01")))
 
 pservices_anonymized_vendors <- professional_services %>%
   filter(str_detect(PRJCT_EN_DESC, regex("Service payments under|Service paiements under|Services payments under|Service payment under|Service payments over", ignore_case = TRUE)))
@@ -23,7 +25,7 @@ pservices_anonymized_vendors <- professional_services %>%
 pservices_named_vendors <- professional_services %>%
   filter(! str_detect(PRJCT_EN_DESC, regex("Service payments under|Service paiements under|Services payments under|Service payment under|Service payments over", ignore_case = TRUE))) %>%
   mutate(lword = word(PRJCT_EN_DESC, -1)) %>%
-  left_join(canadian_regions_index, by = c("lword" = "region_lword")) %>%
+  left_join(canadian_regions_index, by = c("lword" = "region_lword")) %>% ## TODO: Fix the exceptions noted in the region notes.
   mutate(is_canadian_vendor = ! is.na(region_normalized)) %>%
   mutate(
     vendor_identifier = case_when(
