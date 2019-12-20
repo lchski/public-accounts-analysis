@@ -17,9 +17,7 @@ professional_services <- tibble(path = fs::dir_ls("data/source/", regexp = "\\.c
   remove_extra_columns() %>%
   mutate(PRJCT_EN_DESC = trimws(PRJCT_EN_DESC, whitespace = "[\\h\\v]")) %>%
   mutate(fyear = str_trunc(FSCL_YR, 4, ellipsis = "")) %>%
-  mutate(fyear = parse_date(paste0(fyear, "-04-01")))
-
-professional_services %>%
+  mutate(fyear = parse_date(paste0(fyear, "-04-01"))) %>%
   mutate(ROBJ_EN_NM = str_to_sentence(ROBJ_EN_NM)) %>%
   mutate(ROBJ_EN_NM = trimws(str_remove(ROBJ_EN_NM, fixed("(including research)")))) %>%
   mutate(ROBJ_EN_NM = str_replace(ROBJ_EN_NM, "architectual", "architectural")) %>%
@@ -33,8 +31,7 @@ professional_services %>%
   mutate(ROBJ_EN_NM = str_replace(ROBJ_EN_NM, "Accounting services", "Business services")) %>%
   mutate(ROBJ_EN_NM = str_replace(ROBJ_EN_NM, "Accounting services", "Business services")) %>%
   mutate(ROBJ_EN_NM = str_replace(ROBJ_EN_NM, "Non-professional contracted services", "Other services")) %>%
-  mutate(ROBJ_EN_NM = str_replace(ROBJ_EN_NM, "Other professional services", "Other services")) %>%
-  group_by(ROBJ_EN_NM, ROBJ_CD) %>% summarize(count = n(), min = min(fyear), max = max(fyear)) %>% arrange(ROBJ_EN_NM) %>% View()
+  mutate(ROBJ_EN_NM = str_replace(ROBJ_EN_NM, "Other professional services", "Other services"))
 
 pservices_anonymized_vendors <- professional_services %>%
   filter(str_detect(PRJCT_EN_DESC, regex("Service payments under|Service paiements under|Services payments under|Service payment under|Service payments over", ignore_case = TRUE)))
