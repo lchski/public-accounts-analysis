@@ -31,16 +31,6 @@ similar_vendors <- compared_vendors$above_threshold %>%
   rename(text.y = text) %>%
   arrange(id.x)
 
-is_identified_vendor <- function(vendors) {
-  str_detect(
-    string = vendors,
-    pattern = regex(
-      paste(collapse = "|", vendors_index %>% pull(vendor_signal)),
-      ignore_case = TRUE
-    )
-  )
-}
-
 
 similar_vendors %>%
   mutate(
