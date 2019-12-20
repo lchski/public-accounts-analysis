@@ -38,6 +38,11 @@ professional_services <- tibble(path = fs::dir_ls("data/source/", regexp = "\\.c
   ungroup() %>%
   arrange(fyear)
 
+## TODO: clean up departments
+#professional_services %>%
+#  mutate(MINE = str_to_title(MINE)) %>%
+#  count_group(MINE)
+
 is_identified_vendor <- function(vendors) {
   str_detect(
     string = vendors,

@@ -1,10 +1,10 @@
 library(skimr)
 
 pservices_named_it <- pservices_named_vendors %>%
-  filter(ROBJ_EN_NM == "Informatics Services")
+  filter(ROBJ_EN_NM == "Informatics services")
 
 pservices_named_vendors %>%
-  filter(ROBJ_EN_NM == "Informatics Services") %>%
+  filter(ROBJ_EN_NM == "Informatics services") %>%
   select(vendor_normalized, PRJCT_EN_DESC, AGRG_PYMT_AMT) %>%
   group_by(vendor_normalized, PRJCT_EN_DESC) %>%
   summarize(
