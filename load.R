@@ -28,7 +28,13 @@ professional_services %>%
   mutate(ROBJ_EN_NM = str_replace(ROBJ_EN_NM, "reseach", "research")) %>%
   mutate(ROBJ_EN_NM = str_replace(ROBJ_EN_NM, "Services de protection", "Protection services")) %>%
   mutate(ROBJ_EN_NM = str_replace(ROBJ_EN_NM, "education services", "educational services")) %>%
-  count_group(ROBJ_EN_NM) %>% arrange(ROBJ_EN_NM) %>% View()
+  mutate(ROBJ_EN_NM = str_replace(ROBJ_EN_NM, "Scientific services", "Scientific and research services")) %>%
+  mutate(ROBJ_EN_NM = str_replace(ROBJ_EN_NM, "Other business services", "Business services")) %>%
+  mutate(ROBJ_EN_NM = str_replace(ROBJ_EN_NM, "Accounting services", "Business services")) %>%
+  mutate(ROBJ_EN_NM = str_replace(ROBJ_EN_NM, "Accounting services", "Business services")) %>%
+  mutate(ROBJ_EN_NM = str_replace(ROBJ_EN_NM, "Non-professional contracted services", "Other services")) %>%
+  mutate(ROBJ_EN_NM = str_replace(ROBJ_EN_NM, "Other professional services", "Other services")) %>%
+  group_by(ROBJ_EN_NM, ROBJ_CD) %>% summarize(count = n(), min = min(fyear), max = max(fyear)) %>% arrange(ROBJ_EN_NM) %>% View()
 
 pservices_anonymized_vendors <- professional_services %>%
   filter(str_detect(PRJCT_EN_DESC, regex("Service payments under|Service paiements under|Services payments under|Service payment under|Service payments over", ignore_case = TRUE)))
