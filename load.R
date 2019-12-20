@@ -31,15 +31,12 @@ professional_services <- tibble(path = fs::dir_ls("data/source/", regexp = "\\.c
   mutate(ROBJ_EN_NM = str_replace(ROBJ_EN_NM, "Accounting services", "Business services")) %>%
   mutate(ROBJ_EN_NM = str_replace(ROBJ_EN_NM, "Accounting services", "Business services")) %>%
   mutate(ROBJ_EN_NM = str_replace(ROBJ_EN_NM, "Non-professional contracted services", "Other services")) %>%
-  mutate(ROBJ_EN_NM = str_replace(ROBJ_EN_NM, "Other professional services", "Other services"))
-
-professional_services %>%
+  mutate(ROBJ_EN_NM = str_replace(ROBJ_EN_NM, "Other professional services", "Other services")) %>%
   group_by(ROBJ_EN_NM) %>%
   arrange(desc(fyear)) %>%
   fill(ROBJ_CD) %>%
   ungroup() %>%
-  arrange(fyear) %>%
-  group_by(ROBJ_EN_NM, ROBJ_CD) %>% summarize(count = n(), min = min(fyear), max = max(fyear)) %>% View()
+  arrange(fyear)
 
 is_identified_vendor <- function(vendors) {
   str_detect(
