@@ -25,7 +25,11 @@ pservices_anonymized_vendors <- professional_services %>%
 pservices_named_vendors <- professional_services %>%
   filter(! str_detect(PRJCT_EN_DESC, regex("Service payments under|Service paiements under|Services payments under|Service payment under|Service payments over", ignore_case = TRUE))) %>%
   mutate(lword = word(PRJCT_EN_DESC, -1)) %>%
-  left_join(canadian_regions_index, by = c("lword" = "region_lword")) %>% ## TODO: Fix the exceptions noted in the region notes.
+  left_join(canadian_regions_index, by = c("lword" = "region_lword")) %>%
+  mutate(region_normalized = case_when( ## Fixing exceptions noted in region notes.
+    (lword == "Columbia" || lword == "Colombia") & str_detect(PRJCT_EN_DESC, "District of Columbia|Bogota") ~ NA_character_,
+    TRUE ~ region_normalized
+  )) %>%
   mutate(is_canadian_vendor = ! is.na(region_normalized)) %>%
   mutate(
     vendor_identifier = case_when(
