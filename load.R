@@ -33,6 +33,24 @@ professional_services <- tibble(path = fs::dir_ls("data/source/", regexp = "\\.c
   mutate(ROBJ_EN_NM = str_replace(ROBJ_EN_NM, "Non-professional contracted services", "Other services")) %>%
   mutate(ROBJ_EN_NM = str_replace(ROBJ_EN_NM, "Other professional services", "Other services"))
 
+professional_services %>%
+  group_by(ROBJ_EN_NM) %>%
+  arrange(desc(fyear)) %>%
+  fill(ROBJ_CD) %>%
+  ungroup() %>%
+  arrange(fyear) %>%
+  group_by(ROBJ_EN_NM, ROBJ_CD) %>% summarize(count = n(), min = min(fyear), max = max(fyear)) %>% View()
+
+is_identified_vendor <- function(vendors) {
+  str_detect(
+    string = vendors,
+    pattern = regex(
+      paste(collapse = "|", vendors_index %>% pull(vendor_signal)),
+      ignore_case = TRUE
+    )
+  )
+}
+
 pservices_anonymized_vendors <- professional_services %>%
   filter(str_detect(PRJCT_EN_DESC, regex("Service payments under|Service paiements under|Services payments under|Service payment under|Service payments over", ignore_case = TRUE)))
 
