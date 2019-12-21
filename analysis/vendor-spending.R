@@ -39,13 +39,14 @@ compare_vendor_to_baseline <- function(spends_by_vendor = pservices_named_vendor
 }
 
 pservices_named_vendors %>%
-  plot_vendor_spend_by_fy_by_robj("PwC")
+  plot_vendor_spend_by_fy_by_robj("IBM")
 
 pservices_named_vendors %>%
-  compare_vendor_to_baseline("PwC") %>%
+  compare_vendor_to_baseline("IBM") %>%
   ggplot(aes(x = fyear, y = change, color = grouping)) +
   geom_point() +
-  geom_line()
+  geom_line() +
+  ylim(c(0, 10))
 
 
 pservices_named_vendors %>%
