@@ -12,9 +12,3 @@ professional_services %>%
   mutate(prop = spend / sum(spend)) %>%
   ggplot(aes(x = fyear, y = prop)) +
   geom_col()
-
-professional_services_spend_yoy <- professional_services %>%
-  group_by(fyear) %>%
-  summarize(spend = sum(AGRG_PYMT_AMT)) %>%
-  mutate(change = spend / ((.) %>% slice(1) %>% pull(spend))) %>%
-  mutate(grouping = "baseline")

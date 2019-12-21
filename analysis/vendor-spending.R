@@ -20,6 +20,14 @@ plot_vendor_spend_by_fy_by_mine <- function(spends_by_vendor = pservices_named_v
     geom_col()
 }
 
+## I have no idea if this makes sense ¯\_(ツ)_/¯
+professional_services_spend_yoy <- professional_services %>%
+  group_by(fyear) %>%
+  summarize(spend = sum(AGRG_PYMT_AMT)) %>%
+  mutate(change = spend / ((.) %>% slice(1) %>% pull(spend))) %>%
+  mutate(grouping = "baseline")
+
+### cont'd...
 compare_vendor_to_baseline <- function(spends_by_vendor = pservices_named_vendors, vendor_to_plot) {
   spends_by_vendor %>%
     filter(vendor_normalized == vendor_to_plot) %>%
@@ -31,10 +39,10 @@ compare_vendor_to_baseline <- function(spends_by_vendor = pservices_named_vendor
 }
 
 pservices_named_vendors %>%
-  plot_vendor_spend_by_fy_by_robj("Gartner")
+  plot_vendor_spend_by_fy_by_robj("PwC")
 
 pservices_named_vendors %>%
-  compare_vendor_to_baseline("Gartner") %>%
+  compare_vendor_to_baseline("PwC") %>%
   ggplot(aes(x = fyear, y = change, color = grouping)) +
   geom_point() +
   geom_line()
