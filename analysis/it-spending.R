@@ -38,3 +38,28 @@ pservices_named_it %>%
   ) %>%
   select(vendor_normalized, count, count_prop, min:total_prop) %>%
   arrange(-total_prop)
+
+professional_services %>%
+  group_by(FSCL_YR, ROBJ_EN_NM) %>%
+  summarize(spend = sum(AGRG_PYMT_AMT)) %>%
+  mutate(spend_prop = spend / sum(spend)) %>%
+  mutate(it_spend = ROBJ_EN_NM == "Informatics services") %>%
+  group_by(FSCL_YR, it_spend) %>%
+  summarize(spend_prop = sum(spend_prop)) %>%
+  ggplot(aes(x = FSCL_YR, y = spend_prop, color = it_spend, fill = it_spend)) +
+  geom_point() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))
+
+
+## how much has spending on informatics increased year-over-year vs on pservices in general?
+professional_services %>%
+  filter(ROBJ_EN_NM == "Informatics services") %>%
+  group_by(fyear) %>%
+  summarize(spend = sum(AGRG_PYMT_AMT)) %>%
+  mutate(change = spend / ((.) %>% slice(1) %>% pull(spend))) %>%
+  mutate(grouping = "informatics") %>%
+  bind_rows(professional_services_spend_yoy) %>% ## from `vendor-spending.R`
+  ggplot(aes(x = fyear, y = change, color = grouping)) +
+  geom_point() +
+  geom_line() +
+  ylim(c(0, 10))

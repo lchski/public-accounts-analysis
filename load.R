@@ -78,4 +78,8 @@ pservices_named_vendors <- professional_services %>%
     vendors_index %>%
       mutate(vendor_signal = str_to_lower(vendor_signal)),
     by = c("vendor_identifier" = "vendor_signal")
-  )
+  ) %>%
+  mutate(vendor_normalized = case_when(
+    is.na(vendor_normalized) ~ PRJCT_EN_DESC,
+    TRUE ~ vendor_normalized
+  ))

@@ -41,12 +41,13 @@ compare_vendor_to_baseline <- function(spends_by_vendor = pservices_named_vendor
 pservices_named_vendors %>%
   plot_vendor_spend_by_fy_by_robj("IBM")
 
+## % growth in pservices vs first year on file, vs % growth in vendor vs first year on file
 pservices_named_vendors %>%
-  compare_vendor_to_baseline("IBM") %>%
+  compare_vendor_to_baseline("Deloitte") %>%
   ggplot(aes(x = fyear, y = change, color = grouping)) +
   geom_point() +
   geom_line() +
-  ylim(c(0, 10))
+  ylim(c(0, 10)) ## NB: allows for comparability, but cuts off any tenfold increase—which do exist...
 
 
 pservices_named_vendors %>%
